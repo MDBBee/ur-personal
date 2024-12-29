@@ -8,7 +8,11 @@ function App() {
   return (
     <main>
       <Navbar />
-      {isLoading ? <div className="loading"></div> : <CartContainer />}
+      {isLoading ? (
+        <div style={{ marginTop: '100px' }} className="loading"></div>
+      ) : (
+        <CartContainer />
+      )}
     </main>
   );
 }

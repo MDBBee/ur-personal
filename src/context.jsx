@@ -8,14 +8,20 @@ import {
   DISPLAY_LOADER,
   FETCH_ITEMS,
 } from './actions';
-import { initialState } from './reducer';
 import reducer from './reducer';
+import cartItems from './data';
+// cartItems.map((item) => [item.id, item])
+export const initialState = {
+  isLoading: false,
+  cart: new Map(),
+};
 
 const AppContext = createContext();
 const url = 'https://www.course-api.com/react-useReducer-cart-project';
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { totalItems, totalCost } = calcTotals(state);
+
   const clearCart = () => {
     dispatch({ type: CLEAR_CART });
   };
